@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Your awesome title</title>
+    <title>Galstyan</title>
     <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 </description>
-    <link>http://yourdomain.com/</link>
-    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 24 Apr 2020 18:36:13 +0000</pubDate>
-    <lastBuildDate>Fri, 24 Apr 2020 18:36:13 +0000</lastBuildDate>
+    <link>https://galstyan.am/</link>
+    <atom:link href="https://galstyan.am/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 24 Apr 2020 20:28:19 +0000</pubDate>
+    <lastBuildDate>Fri, 24 Apr 2020 20:28:19 +0000</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -28,8 +28,8 @@
 
 </description>
         <pubDate>Fri, 24 Apr 2020 18:34:55 +0000</pubDate>
-        <link>http://yourdomain.com/jekyll/update/2020/04/24/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/jekyll/update/2020/04/24/welcome-to-jekyll.html</guid>
+        <link>https://galstyan.am/jekyll/update/2020/04/24/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">https://galstyan.am/jekyll/update/2020/04/24/welcome-to-jekyll.html</guid>
         
         
         <category>jekyll</category>
