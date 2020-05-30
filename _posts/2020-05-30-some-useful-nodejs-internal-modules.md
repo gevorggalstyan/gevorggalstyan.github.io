@@ -9,7 +9,6 @@ JavaScript in Web browser cannot get the information about Operating System (OS)
 
 {% highlight javascript %}
 
-```javascript
 const os = require("os");
 console.log("operating system information -------------");
 console.log("os.arch()", os.arch()); // x64
@@ -24,7 +23,6 @@ console.log("os.tmpdir()", os.tmpdir()); // C:\Users\cplou\AppData\Local\Temp
 console.log("memory information -------------");
 console.log("os.freemem():", os.freemem()); // 9122930688
 console.log("os.totalmem():", os.totalmem()); // 17060175872
-```
 
 {% endhighlight %}
 
@@ -48,10 +46,8 @@ It helps manipulating folder & file path
 
 {% highlight javascript %}
 
-```javascript
-
 const path = require('path');
-const string = **filename;
+const string = \*\*filename;
 // path.sep: /
 console.log('path.sep:', path.sep);
 // path.delimiter: :
@@ -89,10 +85,9 @@ console.log('------');
 // path.relative(): ../C:\
 console.log('path.relative():', path.relative('C:\\users\\cplou\\path.js', 'C:\\'));
 // path.join(): /Users/gp/Desktop/users/cplou
-console.log('path.join():', path.join(__dirname, '..', '..', '/users', '.', '/', 'cplou'));
+console.log('path.join():', path.join(**dirname, '..', '..', '/users', '.', '/', 'cplou'));
 // path.resolve(): /cplou
-console.log('path.resolve():', path.resolve(__dirname, '..', 'users', '.', '/cplou'));
-```
+console.log('path.resolve():', path.resolve(**dirname, '..', 'users', '.', '/cplou'));
 
 {% endhighlight %}
 
@@ -124,11 +119,10 @@ Some Useful Node.js Internal Modules 1
 
 {% highlight javascript %}
 
-```javascript
 const url = require("url");
 const URL = url.URL;
 const myURL = new URL(
-  "https://christosploutarchou.com/posts/nodejs/#authentication-vs-authorization"
+"https://christosploutarchou.com/posts/nodejs/#authentication-vs-authorization"
 );
 console.log("new URL():", myURL);
 // new URL(): URL {
@@ -149,7 +143,7 @@ console.log("url.format():", url.format(myURL));
 // url.format(): https://christosploutarchou.com/posts/nodejs/#authentication-vs-authorization
 console.log("--------");
 const parsedUrl = url.parse(
-  "https://christosploutarchou.com/posts/nodejs/#authentication-vs-authorization"
+"https://christosploutarchou.com/posts/nodejs/#authentication-vs-authorization"
 );
 console.log("url.parse():", parsedUrl);
 // url.parse(): Url {
@@ -168,7 +162,6 @@ console.log("url.parse():", parsedUrl);
 // 'https://christosploutarchou.com/posts/nodejs/#authentication-vs-authorization'}
 console.log("url.format():", url.format(parsedUrl));
 // url.format():https://christosploutarchou.com/posts/nodejs/#authentication-vs-authorization
-```
 
 {% endhighlight %}
 
@@ -181,18 +174,14 @@ Convert searchParams of url into an object
 
 {% highlight javascript %}
 
-```javascript
 const url = require("url");
 const querystring = require("querystring");
-const parsedUrl = url.parse(
-  "http://www.google.com/?page=3&limit=10&category=nodejs&category=javascript"
-);
+const parsedUrl = url.parse("http://www.google.com/?page=3&limit=10&category=nodejs&category=javascript");
 const query = querystring.parse(parsedUrl.query);
 console.log("querystring.parse():", query);
 // querystring.parse(): [Object: null prototype] { page: '3', limit: '10', category:
 // [ 'nodejs', 'javascript' ] }
 console.log("querystring.stringify():", querystring.stringify(query));
 // querystring.stringify(): page=3&limit=10&category=nodejs&category=javascript
-```
 
 {% endhighlight %}
