@@ -1,48 +1,7 @@
-<article class="markdown-body">
-
-- [**Modern Typescript with Examples Cheat Sheet**](#modern-typescript-with-examples-cheat-sheet)
-- [Typing Objects](#typing-objects)
-  - [`Object` Versus `object`](#object-versus-object)
-  - [Interface Signatures Overview](#interface-signatures-overview)
-    - [Index Signature](#index-signature)
-    - [Call Signature](#call-signature)
-    - [Construct Signature](#construct-signature)
-  - [Type Literal Syntax](#type-literal-syntax)
-  - [Excess Properties (⛔ Inconsistency)](#excess-properties--inconsistency)
-- [Mapped Types - Getting Types from Data](#mapped-types---getting-types-from-data)
-  - [`typeof` / `keyof` Examples](#typeof--keyof-examples)
-  - [`keyof` with Generics and Interfaces Example](#keyof-with-generics-and-interfaces-example)
-- [Immutability](#immutability)
-  - [`readonly` Properties](#readonly-properties)
-  - [`readonly` Class Properties](#readonly-class-properties)
-  - [`readonly` Array / Tuple](#readonly-array--tuple)
-  - [`const` Assertions](#const-assertions)
-- [Strict Mode](#strict-mode)
-  - [Non-Nullable Types `--strictNullChecks`](#non-nullable-types---strictnullchecks)
-  - [Strict Bind Call Apply `--strictBindCallApply`](#strict-bind-call-apply---strictbindcallapply)
-  - [Strict Class Property Initialization `--strictPropertyInitialization`](#strict-class-property-initialization---strictpropertyinitialization)
-- [Types](#types)
-  - [`never`](#never)
-  - [`unknown`](#unknown)
-    - [Reading `JSON` from `localStorage` using `unknown` Example](#reading-json-from-localstorage-using-unknown-example)
-- [Generics](#generics)
-  - [With and Without Type Argument Inference](#with-and-without-type-argument-inference)
-  - [Using More Than One Type Argument](#using-more-than-one-type-argument)
-  - [Higher Order Function with `Parameters<T>` and `ReturnType<T>`](#higher-order-function-with-parameterst-and-returntypet)
-  - [Advanced Factory using `ConstructorParameters<T>` and `InstanceType<T>`](#advanced-factory-using-constructorparameterst-and-instancetypet)
-- [Discriminated Unions](#discriminated-unions)
-  - [Exhaustive Pattern Matching Using `never`](#exhaustive-pattern-matching-using-never)
-- [Optional Chaining](#optional-chaining)
-  - [`?.` returns `undefined` when hitting a `null` or `undefined`](#-returns-undefined-when-hitting-a-null-or-undefined)
-- [Nullish Coalescing](#nullish-coalescing)
-  - [`??` “fall Backs” to a Default Value When Dealing with `null` or `undefined`](#-fall-backs-to-a-default-value-when-dealing-with-null-or-undefined)
-- [Assertion Functions](#assertion-functions)
-  - [A Standard JavaScript `Assert()` Doesn’t Work for Type Checking](#a-standard-javascript-assert-doesnt-work-for-type-checking)
-  - [Using `if` and `typeof` Everywhere is Bloat](#using-if-and-typeof-everywhere-is-bloat)
-  - [Assertion Function Style 1 - Check for a Condition](#assertion-function-style-1---check-for-a-condition)
-  - [Assertion Function Style 2 - Tell Typescript That a Specific Variable or Property Has a Different Type](#assertion-function-style-2---tell-typescript-that-a-specific-variable-or-property-has-a-different-type)
-
-# **Modern Typescript with Examples Cheat Sheet**
+---
+layout: posts
+title: Modern Typescript with Examples Cheat Sheet
+---
 
 # Typing Objects
 
@@ -86,10 +45,6 @@ interface ExampleInterface {
 }
 ```
 
-<div style="page-break-after: always;">
-
-</div>
-
 ### Index Signature
 
 Helps to describe Arrays or objects that are used as dictionaries.
@@ -127,16 +82,12 @@ interface ClickListener {
   (this: Window, e: MouseEvent): void;
 }
 
-const myListener: ClickListener = e => {
+const myListener: ClickListener = (e) => {
   console.log("mouse clicked!", e);
 };
 
 addEventListener("click", myListener);
 ```
-
-<div style="page-break-after: always;">
-
-</div>
 
 ### Construct Signature
 
@@ -181,10 +132,6 @@ function createClock(
 let clockClassDeclaration = createClock(ClockB, 12, 17);
 ```
 
-<div style="page-break-after: always;">
-
-</div>
-
 ## Type Literal Syntax
 
 Typically used in the signature of a higher-order function.
@@ -217,22 +164,18 @@ function printDog(dog: Dog) {
 
 const ginger = {
   breed: "Airedale",
-  age: 3
+  age: 3,
 };
 
 printDog(ginger); // excess properties are OK!
 
 printDog({
   breed: "Airedale",
-  age: 3
+  age: 3,
 });
 // Excess properties are NOT OK!!
 // Argument of type '{ breed: string; age: number; }' is not assignable...
 ```
-
-<div style="page-break-after: always;">
-
-</div>
 
 # Mapped Types - Getting Types from Data
 
@@ -264,12 +207,12 @@ type Data = typeof data[number]; // "text 1" | "text 2"
 const locales = [
   {
     locale: "se",
-    language: "Swedish"
+    language: "Swedish",
   },
   {
     locale: "en",
-    language: "English"
-  }
+    language: "English",
+  },
 ] as const;
 type Locale = typeof locales[number]["locale"]; // "se" | "en"
 ```
@@ -278,14 +221,10 @@ type Locale = typeof locales[number]["locale"]; // "se" | "en"
 const currencySymbols = {
   GBP: "£",
   USD: "$",
-  EUR: "€"
+  EUR: "€",
 };
 type CurrencySymbol = keyof typeof currencySymbols; // "GBP" | "USD" | "EUR"
 ```
-
-<div style="page-break-after: always;">
-
-</div>
 
 ## `keyof` with Generics and Interfaces Example
 
@@ -321,10 +260,6 @@ type AllCommKeys = keyof CommunicationMethods;
 type AllCommValues = CommunicationMethods[keyof CommunicationMethods];
 ```
 
-<div style="page-break-after: always;">
-
-</div>
-
 # Immutability
 
 ## `readonly` Properties
@@ -350,7 +285,7 @@ function moveX(p: Point, offset: number): Point {
   // OK
   return {
     x: p.x + offset,
-    y: p.y
+    y: p.y,
   };
 }
 ```
@@ -372,10 +307,6 @@ class Circle {
   }
 }
 ```
-
-<div style="page-break-after: always;">
-
-</div>
 
 ## `readonly` Array / Tuple
 
@@ -425,7 +356,7 @@ let arr = [1, 2, 3, 4];
 
 let foo = {
   name: "foo",
-  contents: arr
+  contents: arr,
 } as const;
 
 foo.name = "bar"; // Error
@@ -433,10 +364,6 @@ foo.contents = []; // Error
 
 foo.contents.push(5); // OK
 ```
-
-<div style="page-break-after: always;">
-
-</div>
 
 # Strict Mode
 
@@ -494,10 +421,6 @@ type User = {
 
 <!-- end list -->
 
-<div style="page-break-after: always;">
-
-</div>
-
 ```ts
 function fn1(x: number | undefined): void {
   x;
@@ -551,10 +474,6 @@ function doSomething(callback?: () => void) {
 }
 ```
 
-<div style="page-break-after: always;">
-
-</div>
-
 ## Strict Bind Call Apply `--strictBindCallApply`
 
 > The `call()` method calls a function with a given `this` value and arguments
@@ -607,10 +526,6 @@ const user = new User("mariusschulz");
 const username = user.username.toLowerCase();
 ```
 
-<div style="page-break-after: always;">
-
-</div>
-
 - Has a type that includes undefined
 
 <!-- end list -->
@@ -652,10 +567,6 @@ function controlFlowAnalysisWithNever(value: string | number) {
 }
 ```
 
-<div style="page-break-after: always;">
-
-</div>
-
 ## `unknown`
 
 `unknown` is the type-safe counterpart of the `any` type: we have to do some
@@ -675,7 +586,7 @@ function tryDeserializeLocalStorageItem(key: string): Result {
     // The item does not exist, thus return an error result
     return {
       success: false,
-      error: new Error(`Item with key "${key}" does not exist`)
+      error: new Error(`Item with key "${key}" does not exist`),
     };
   }
 
@@ -687,21 +598,17 @@ function tryDeserializeLocalStorageItem(key: string): Result {
     // The item is not valid JSON, thus return an error result
     return {
       success: false,
-      error
+      error,
     };
   }
 
   // Everything's fine, thus return a success result
   return {
     success: true,
-    value
+    value,
   };
 }
 ```
-
-<div style="page-break-after: always;">
-
-</div>
 
 # Generics
 
@@ -729,7 +636,7 @@ function makePair<F, S>() {
   function setPair(x: F, y: S) {
     pair = {
       first: x,
-      second: y
+      second: y,
     };
   }
   return { getPair, setPair };
@@ -737,10 +644,6 @@ function makePair<F, S>() {
 const { getPair, setPair } = makePair<number, string>(); // Creates a pair
 setPair(1, "y"); // Must pass (number, string)
 ```
-
-<div style="page-break-after: always;">
-
-</div>
 
 ## Higher Order Function with `Parameters<T>` and `ReturnType<T>`
 
@@ -789,10 +692,6 @@ const entityFactory = <
 entities.push(...entityFactory(Hero, 10, [12, 10]));
 ```
 
-<div style="page-break-after: always;">
-
-</div>
-
 # Discriminated Unions
 
 A data structure used to hold a value that could take on several different, but
@@ -840,10 +739,6 @@ function area(s: Shape) {
 }
 ```
 
-<div style="page-break-after: always;">
-
-</div>
-
 # Optional Chaining
 
 ## `?.` returns `undefined` when hitting a `null` or `undefined`
@@ -882,10 +777,6 @@ interface OptionalFunction {
 const foo: OptionalFunction = {};
 const bat = foo.bar?.(); // number | undefined
 ```
-
-<div style="page-break-after: always;">
-
-</div>
 
 # Nullish Coalescing
 
@@ -937,10 +828,6 @@ function yell(str) {
   return str.toUppercase();
 }
 ```
-
-<div style="page-break-after: always;">
-
-</div>
 
 ## Assertion Function Style 1 - Check for a Condition
 
