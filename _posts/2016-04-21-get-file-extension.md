@@ -2,17 +2,6 @@
 layout: post
 
 title: Get File Extension
-tip-number: 53
-tip-username: richzw
-tip-username-profile: https://github.com/richzw
-tip-tldr: How to get the file extension more efficiently?
-
-redirect_from:
-  - /en/get-file-extension/
-
-categories:
-    - en
-    - javascript
 ---
 
 ### Question: How to get the file extension?
@@ -32,7 +21,7 @@ function getFileExtension(filename) {
 
 ```js
 function getFileExtension1(filename) {
-  return (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename)[0] : undefined;
+  return /[.]/.exec(filename) ? /[^.]+$/.exec(filename)[0] : undefined;
 }
 ```
 
@@ -40,7 +29,7 @@ function getFileExtension1(filename) {
 
 ```js
 function getFileExtension2(filename) {
-  return filename.split('.').pop();
+  return filename.split(".").pop();
 }
 ```
 
@@ -50,14 +39,14 @@ Those two solutions couldnot handle some edge cases, here is another more robust
 
 ```js
 function getFileExtension3(filename) {
-  return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
+  return filename.slice(((filename.lastIndexOf(".") - 1) >>> 0) + 2);
 }
 
-console.log(getFileExtension3(''));                            // ''
-console.log(getFileExtension3('filename'));                    // ''
-console.log(getFileExtension3('filename.txt'));                // 'txt'
-console.log(getFileExtension3('.hiddenfile'));                 // ''
-console.log(getFileExtension3('filename.with.many.dots.ext')); // 'ext'
+console.log(getFileExtension3("")); // ''
+console.log(getFileExtension3("filename")); // ''
+console.log(getFileExtension3("filename.txt")); // 'txt'
+console.log(getFileExtension3(".hiddenfile")); // ''
+console.log(getFileExtension3("filename.with.many.dots.ext")); // 'ext'
 ```
 
 _How does it works?_
@@ -68,11 +57,11 @@ _How does it works?_
 
 ### Comparison
 
-| Solution                                  | Paramters           | Results  |
-| ----------------------------------------- |:-------------------:|:--------:|
-| Solution 1: Regular Expression            | ''<br>  'filename' <br> 'filename.txt' <br> '.hiddenfile' <br> 'filename.with.many.dots.ext' | undefined <br> undefined <br> 'txt' <br> 'hiddenfile' <br> 'ext' <br> |
-| Solution 2: String `split`                | ''<br>  'filename' <br> 'filename.txt' <br> '.hiddenfile' <br> 'filename.with.many.dots.ext'            | '' <br> 'filename' <br> 'txt' <br> 'hiddenfile' <br> 'ext' <br> |
-| Solution 3: String `slice`, `lastIndexOf` | ''<br>  'filename' <br> 'filename.txt' <br> '.hiddenfile' <br> 'filename.with.many.dots.ext'            | '' <br> '' <br> 'txt' <br> '' <br> 'ext' <br> |
+| Solution                                  |                                          Paramters                                          |                                Results                                |
+| ----------------------------------------- | :-----------------------------------------------------------------------------------------: | :-------------------------------------------------------------------: |
+| Solution 1: Regular Expression            | ''<br> 'filename' <br> 'filename.txt' <br> '.hiddenfile' <br> 'filename.with.many.dots.ext' | undefined <br> undefined <br> 'txt' <br> 'hiddenfile' <br> 'ext' <br> |
+| Solution 2: String `split`                | ''<br> 'filename' <br> 'filename.txt' <br> '.hiddenfile' <br> 'filename.with.many.dots.ext' |    '' <br> 'filename' <br> 'txt' <br> 'hiddenfile' <br> 'ext' <br>    |
+| Solution 3: String `slice`, `lastIndexOf` | ''<br> 'filename' <br> 'filename.txt' <br> '.hiddenfile' <br> 'filename.with.many.dots.ext' |             '' <br> '' <br> 'txt' <br> '' <br> 'ext' <br>             |
 
 ### Live Demo and Performance
 

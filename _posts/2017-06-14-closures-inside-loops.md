@@ -2,14 +2,6 @@
 layout: post
 
 title: Closures inside loops
-tip-number: 76
-tip-username: loverajoel
-tip-username-profile: https://github.com/loverajoel
-tip-tldr: Closure in a loop is an interesting topic and this is the tip to be a master of it
-
-categories:
-    - en
-    - javascript
 ---
 
 If you ever come across the likes of
@@ -17,7 +9,7 @@ If you ever come across the likes of
 ```javascript
 var funcs = [];
 for (var i = 0; i < 3; i++) {
-  funcs[i] = function() {
+  funcs[i] = function () {
     console.log("i value is " + i);
   };
 }
@@ -49,7 +41,7 @@ To solve this situation you can do as follows:
 
 ```javascript
 for (var i = 0; i < 3; i++) {
-  funcs[i] = (function(value) {
+  funcs[i] = (function (value) {
     console.log("i value is " + i);
   })(i);
 }
@@ -59,9 +51,9 @@ Which effectively copies i by value by handing it to our closure or
 
 ```javascript
 for (let i = 0; i < 3; i++) {
-  funcs[i] = function() {
+  funcs[i] = function () {
     console.log("i value is " + i);
-  }
+  };
 }
 ```
 

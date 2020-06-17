@@ -2,18 +2,6 @@
 layout: post
 
 title: ES6, var vs let
-tip-number: 59
-tip-username: richzw
-tip-username-profile: https://github.com/richzw
-tip-tldr: In this tip, I will introduce the block-scope difference between keyword var and let. Should I replace var by let? let's take a look
-
-
-redirect_from:
-  - /en/keyword-var-vs-let/
-
-categories:
-    - en
-    - javascript
 ---
 
 ### Overview
@@ -26,16 +14,16 @@ function varvslet() {
   console.log(i); // i is undefined due to hoisting
   // console.log(j); // ReferenceError: j is not defined
 
-  for( var i = 0; i < 3; i++ ) {
+  for (var i = 0; i < 3; i++) {
     console.log(i); // 0, 1, 2
-  };
+  }
 
   console.log(i); // 3
   // console.log(j); // ReferenceError: j is not defined
 
-  for( let j = 0; j < 3; j++ ) {
+  for (let j = 0; j < 3; j++) {
     console.log(j);
-  };
+  }
 
   console.log(i); // 3
   // console.log(j); // ReferenceError: j is not defined
@@ -68,34 +56,34 @@ function varvslet() {
 for (var i = 0; i < 5; ++i) {
   setTimeout(function () {
     console.log(i); // output '5' 5 times
-  }, 100);  
+  }, 100);
 }
 ```
 
-  After replacing `var` with `let`
-  
+After replacing `var` with `let`
+
 ```js
 // print 1, 2, 3, 4, 5
 for (let i = 0; i < 5; ++i) {
   setTimeout(function () {
-    console.log(i); // output 0, 1, 2, 3, 4 
-  }, 100);  
+    console.log(i); // output 0, 1, 2, 3, 4
+  }, 100);
 }
 ```
-
 
 ### Should I replace `var` with `let`?
 
 > NO, `let` is the new block scoping `var`. That statement emphasizes that `let` should replace `var` only when `var` was already signaling
-block scoping stylistically. Otherwise, leave `var` alone. `let` improves scoping options in JS, not replaces. `var` is still a useful signal for variables that are used throughout the function. 
+> block scoping stylistically. Otherwise, leave `var` alone. `let` improves scoping options in JS, not replaces. `var` is still a useful signal for variables that are used throughout the function.
 
 ### `let` compatibility
 
 - In server side, such as Node.js, you can safely use the `let` statement now.
-  
+
 - In client side, through a transpiler (like [Traceur](https://github.com/google/traceur-compiler)), you can safely use the `let` statement. Otherwise, please consider the browser support [here](http://caniuse.com/#search=let)
 
 ### Playground
+
 <div>
   <a class="jsbin-embed" href="http://jsbin.com/yumaye/embed?js,console">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.39.11"></script>
 </div>

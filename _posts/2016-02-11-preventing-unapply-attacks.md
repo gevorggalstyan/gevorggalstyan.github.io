@@ -2,17 +2,6 @@
 layout: post
 
 title: Preventing Unapply Attacks
-tip-number: 42
-tip-username: emars 
-tip-username-profile: https://twitter.com/marseltov
-tip-tldr: Freeze the builtin prototypes.
-
-redirect_from:
-  - /en/preventing-unapply-attacks/
-
-categories:
-    - en
-    - javascript
 ---
 
 By overriding the builtin prototypes, external code can cause code to break by rewriting code to expose and change bound arguments. This can be an issue that seriously breaks applications that works by using polyfill es5 methods.
@@ -28,7 +17,6 @@ function bind(fn) {
   };
 }
 
-
 // unapply-attack
 function unapplyAttack() {
   var concat = Array.prototype.concat;
@@ -43,18 +31,17 @@ function unapplyAttack() {
 
 The above function discards the `prev` array from the bind meaning that any `.concat` the first concat call following using the unapply attack will throw an error.
 
-By using [Object.freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze), making an object immutable, you prevent any overriding of the builtin object prototypes. 
-
+By using [Object.freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze), making an object immutable, you prevent any overriding of the builtin object prototypes.
 
 ```js
 (function freezePrototypes() {
-  if (typeof Object.freeze !== 'function') {
-    throw new Error('Missing Object.freeze');
+  if (typeof Object.freeze !== "function") {
+    throw new Error("Missing Object.freeze");
   }
   Object.freeze(Object.prototype);
   Object.freeze(Array.prototype);
   Object.freeze(Function.prototype);
-}());
+})();
 ```
 
 You can read more about unapply attacks [here](https://glebbahmutov.com/blog/unapply-attack/).

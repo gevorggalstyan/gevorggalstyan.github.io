@@ -2,18 +2,6 @@
 layout: post
 
 title: Map() to the rescue; adding order to Object properties
-tip-number: 32
-tip-username: loverajoel
-tip-username-profile: https://twitter.com/loverajoel
-tip-tldr: An Object it is an unordered collection of properties... that means that if you are trying to save ordered data inside an Object, you have to review it because properties order in objects are not guaranteed.
-tip-writer-support: https://www.coinbase.com/loverajoel
-
-redirect_from:
-  - /en/map-to-the-rescue-adding-order-to-object-properties/
-
-categories:
-    - en
-    - javascript
 ---
 
 ## Object properties order
@@ -39,13 +27,14 @@ for (item in myObject) {...
 // @
 // b
 ```
+
 Each browser have his own rules about the order in objects bebause technically, order is unspecified.
 
 ## How to solve this?
 
 ### Map
 
-Using a new ES6 feature called Map. A [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) object iterates its elements in insertion order — a `for...of` loop returns an array of [key, value] for each iteration. 
+Using a new ES6 feature called Map. A [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) object iterates its elements in insertion order — a `for...of` loop returns an array of [key, value] for each iteration.
 
 ```js
 var myObject = new Map();
@@ -63,6 +52,7 @@ for (var [key, value] of myObject) {
 ### Hack for old browsers
 
 Mozilla suggest:
+
 > So, if you want to simulate an ordered associative array in a cross-browser environment, you are forced to either use two separate arrays (one for the keys and the other for the values), or build an array of single-property objects, etc.
 
 ```js
