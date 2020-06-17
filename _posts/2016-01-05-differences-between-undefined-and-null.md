@@ -2,18 +2,6 @@
 layout: post
 
 title: Differences between `undefined` and `null`
-tip-number: 05
-tip-username: loverajoel 
-tip-username-profile: https://github.com/loverajoel
-tip-tldr: Understanding the differences between `undefined` and `null`.
-tip-writer-support: https://www.coinbase.com/loverajoel
-
-redirect_from:
-  - /en/differences-between-undefined-and-null/
-
-categories:
-    - en
-    - javascript
 ---
 
 - `undefined` means a variable has not been declared, or has been declared but has not yet been assigned a value
@@ -29,17 +17,24 @@ categories:
 - You can know if a variable is [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)
 
   ```javascript
-  typeof variable === "undefined"
-```
+  typeof variable === "undefined";
+  ```
+
+````
 - You can check if a variable is [null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)
 
   ```javascript
   variable === null
-```
+````
+
 - The **equality** operator considers them equal, but the **identity** doesn't
 
   ```javascript
-  null == undefined // true
+  null == undefined; // true
 
-  null === undefined // false
+  null === undefined; // false
+  ```
+
+```
+
 ```

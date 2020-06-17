@@ -2,31 +2,19 @@
 layout: post
 
 title: Currying vs partial application
-tip-number: 28
-tip-username: bhaskarmelkani
-tip-username-profile: https://www.twitter.com/bhaskarmelkani
-tip-tldr: Currying and partial application are two ways of transforming a function into another function with a generally smaller arity.
-
-
-redirect_from:
-  - /en/curry-vs-partial-application/
-
-categories:
-    - en
-    - javascript
 ---
 
 **Currying**
 
-Currying takes a function 
+Currying takes a function
 
-f: X * Y -> R
+f: X \* Y -> R
 
 and turns it into a function
 
 f': X -> (Y -> R)
 
-Instead of calling f with two arguments, we invoke f' with the first argument. The result is a function that we then call with the second argument to produce the result. 
+Instead of calling f with two arguments, we invoke f' with the first argument. The result is a function that we then call with the second argument to produce the result.
 
 Thus, if the uncurried f is invoked as
 
@@ -40,12 +28,11 @@ For example:
 Uncurried add()
 
 ```javascript
-
 function add(x, y) {
   return x + y;
 }
 
-add(3, 5);   // returns 8
+add(3, 5); // returns 8
 ```
 
 Curried add()
@@ -54,13 +41,13 @@ Curried add()
 function addC(x) {
   return function (y) {
     return x + y;
-  }
+  };
 }
 
-addC(3)(5);   // returns 8
+addC(3)(5); // returns 8
 ```
 
-**The algorithm for currying.** 
+**The algorithm for currying.**
 
 Curry takes a binary function and returns a unary function that returns a unary function.
 
@@ -70,11 +57,11 @@ Javascript Code:
 
 ```javascript
 function curry(f) {
-  return function(x) {
-    return function(y) {
+  return function (x) {
+    return function (y) {
       return f(x, y);
-    }
-  }
+    };
+  };
 }
 ```
 
@@ -82,7 +69,7 @@ function curry(f) {
 
 Partial application takes a function
 
-f: X * Y -> R
+f: X \* Y -> R
 
 and a fixed value for the first argument to produce a new function
 
@@ -97,12 +84,12 @@ function plus5(y) {
   return 5 + y;
 }
 
-plus5(3);  // returns 8
+plus5(3); // returns 8
 ```
 
-**The algorithm of partial application.*** 
+**The algorithm of partial application.\***
 
-partApply takes a binary function and a value and produces a unary function. 
+partApply takes a binary function and a value and produces a unary function.
 
 partApply : ((X × Y → R) × X) → (Y → R)
 
@@ -110,8 +97,8 @@ Javascript Code:
 
 ```javascript
 function partApply(f, x) {
-  return function(y) {
+  return function (y) {
     return f(x, y);
-  }
+  };
 }
 ```

@@ -2,26 +2,17 @@
 layout: post
 
 title: Fat Arrow Functions
-tip-number: 14
-tip-username: pklinger
-tip-username-profile: https://github.com/pklinger/
-tip-tldr: Introduced as a new feature in ES6, fat arrow functions may come as a handy tool to write more code in fewer lines
-
-redirect_from:
-  - /en/fat-arrow-functions/
-
-categories:
-    - en
-    - javascript
 ---
 
 Introduced as a new feature in ES6, fat arrow functions may come as a handy tool to write more code in fewer lines. The name comes from its syntax, `=>`, which is a 'fat arrow', as compared to a thin arrow `->`. Some programmers might already know this type of function from different languages such as Haskell, as 'lambda expressions', or as 'anonymous functions'. It is called anonymous, as these arrow functions do not have a descriptive function name.
 
 ### What are the benefits?
-* Syntax: fewer LOC; no more typing `function` keyword over and over again
-* Semantics: capturing the keyword `this` from the surrounding context
+
+- Syntax: fewer LOC; no more typing `function` keyword over and over again
+- Semantics: capturing the keyword `this` from the surrounding context
 
 ### Simple syntax example
+
 Have a look at these two code snippets, which do the exact same job, and you will quickly understand what fat arrow functions do:
 
 ```javascript
@@ -50,10 +41,9 @@ As you can see, the fat arrow function in this case can save you time typing out
 
 ### Lexically binding `this`
 
-There is another good reason to use fat arrow functions. There is the issue with the context of `this`. With arrow functions, you don't need to worry about `.bind(this)` or setting `that = this` anymore, as fat arrow functions pick the context of `this` from the lexical surrounding. Have a look at the next [example] (https://jsfiddle.net/pklinger/rw94oc11/):
+There is another good reason to use fat arrow functions. There is the issue with the context of `this`. With arrow functions, you don't need to worry about `.bind(this)` or setting `that = this` anymore, as fat arrow functions pick the context of `this` from the lexical surrounding. Have a look at the next [example](https://jsfiddle.net/pklinger/rw94oc11/):
 
 ```javascript
-
 // globally defined this.i
 this.i = 100;
 
@@ -78,7 +68,7 @@ function CounterA() {
 function CounterB() {
   this.i = 0;
   var that = this;
-  setInterval(function() {
+  setInterval(function () {
     that.i++;
     document.getElementById("counterB").innerHTML = that.i;
   }, 500);
@@ -87,10 +77,13 @@ function CounterB() {
 // using .bind(this)
 function CounterC() {
   this.i = 0;
-  setInterval(function() {
-    this.i++;
-    document.getElementById("counterC").innerHTML = this.i;
-  }.bind(this), 500);
+  setInterval(
+    function () {
+      this.i++;
+      document.getElementById("counterC").innerHTML = this.i;
+    }.bind(this),
+    500
+  );
 }
 
 // fat arrow function
@@ -103,4 +96,4 @@ function CounterD() {
 }
 ```
 
-Further information about fat arrow functions may be found at [MDN] (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions). To see different syntax options visit [this site] (http://jsrocks.org/2014/10/arrow-functions-and-their-scope/).
+Further information about fat arrow functions may be found at [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions). To see different syntax options visit [this site](http://jsrocks.org/2014/10/arrow-functions-and-their-scope/).

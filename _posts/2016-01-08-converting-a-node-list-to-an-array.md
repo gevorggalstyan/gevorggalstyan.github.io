@@ -2,17 +2,6 @@
 layout: post
 
 title: Converting a Node List to an Array
-tip-number: 08
-tip-username: Tevko
-tip-username-profile: https://twitter.com/tevko
-tip-tldr: Here's a quick, safe, and reusable way to convert a node list into an array of DOM elements.
-
-redirect_from:
-  - /en/converting-a-node-list-to-an-array/
-
-categories:
-    - en
-    - javascript
 ---
 
 The `querySelectorAll` method returns an array-like object called a node list. These data structures are referred to as "Array-like", because they appear as an array, but can not be used with array methods like `map` and `forEach`. Here's a quick, safe, and reusable way to convert a node list into an array of DOM elements:

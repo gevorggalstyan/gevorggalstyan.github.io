@@ -2,17 +2,6 @@
 layout: post
 
 title: Tip to measure performance of a javascript block
-tip-number: 13
-tip-username: manmadareddy
-tip-username-profile: https://twitter.com/manmadareddy
-tip-tldr: For quickly measuring performance of a javascript block, we can use the console functions like `console.time(label)` and `console.timeEnd(label)`
-
-redirect_from:
-  - /en/tip-to-measure-performance-of-a-javascript-block/
-
-categories:
-    - en
-    - javascript
 ---
 
 For quickly measuring performance of a javascript block, we can use the console functions like
@@ -21,12 +10,12 @@ For quickly measuring performance of a javascript block, we can use the console 
 ```javascript
 console.time("Array initialize");
 var arr = new Array(100),
-    len = arr.length,
-    i;
+  len = arr.length,
+  i;
 
 for (i = 0; i < len; i++) {
-    arr[i] = new Object();
-};
+  arr[i] = new Object();
+}
 console.timeEnd("Array initialize"); // Outputs: Array initialize: 0.711ms
 ```
 
